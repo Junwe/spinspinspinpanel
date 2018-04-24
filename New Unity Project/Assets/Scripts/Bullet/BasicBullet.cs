@@ -28,7 +28,7 @@ public class BasicBullet : MonoBehaviour
             _isMoveing = value;
         }
     }
-
+    // startangle : 시작 각도, startradius : 시작 반지름, MoveTime : 움직이는 시간
     public void OnActive(float StartAngle, float StartRadius, float MoveTime)
     {
         gameObject.SetActive(true);
@@ -72,6 +72,7 @@ public class BasicBullet : MonoBehaviour
         {
             if (!_isMoveing)
             {
+                // 초기화
                 gameObject.SetActive(false);
                 _radius = 10000f;
             }

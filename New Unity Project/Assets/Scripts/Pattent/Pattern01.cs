@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PATTEN01INFO
+public class PATTERN01INFO
 {
     public float TweenAngle = 0f;
     public float CreateTime = 0.1f;
@@ -12,9 +12,9 @@ public class PATTEN01INFO
     public List<BasicBullet> listMyBullet = new List<BasicBullet>();
 }
 
-public class Patten01 : IPatten
+public class Pattern01 : IPattern
 {
-    List<PATTEN01INFO> infolist = new List<PATTEN01INFO>();
+    List<PATTERN01INFO> infolist = new List<PATTERN01INFO>();
 
     private int _waveCount;
     private float _animationTime;
@@ -25,7 +25,7 @@ public class Patten01 : IPatten
 
     private List<Tweener> _tweener = new List<Tweener>();
 
-    public Patten01(int _waveCount, float _animationTime, float _bulletAnimationTime, float _animationAngle, AnimationCurve _curve_Angle)
+    public Pattern01(int _waveCount, float _animationTime, float _bulletAnimationTime, float _animationAngle, AnimationCurve _curve_Angle)
     {
         this._waveCount = _waveCount;
         this._animationTime = _animationTime;
@@ -43,7 +43,7 @@ public class Patten01 : IPatten
             setTweenAngle(i);
         }
     }
-
+    int nBulletCnt = 0;
     public void OnUpdate()
     {
         for (int i = 0; i < infolist.Count; ++i)
@@ -57,11 +57,8 @@ public class Patten01 : IPatten
 
                 infolist[i].listMyBullet.Add(temp);
                 infolist[i].CreateTimeCount = 0f;
-            }
-
-            for (int j = 0; j < infolist[i].listMyBullet.Count; ++j)
-            {
-                infolist[i].listMyBullet[j].SetBulletAngleInfo(infolist[i].TweenAngle);
+                nBulletCnt++;
+                Debug.Log(nBulletCnt);
             }
         }
 
@@ -96,7 +93,7 @@ public class Patten01 : IPatten
         float WaveStartAngle = 360f / BulletWaveCount;
         for (int i = 0; i < BulletWaveCount; ++i)
         {
-            PATTEN01INFO info = new PATTEN01INFO();
+            PATTERN01INFO info = new PATTERN01INFO();
 
             info.TweenAngle = WaveStartAngle * (i + 1);
             info.CreateTime = 0.5f;
@@ -104,4 +101,10 @@ public class Patten01 : IPatten
         }
     }
 
+    public int GetTotalBallCount()
+    {
+        int cnt = (int)((_bulletAnimationTime / 0.5f * _waveCount) - _waveCount);
+
+        return cnt;
+    }
 }
