@@ -32,4 +32,12 @@ public class Player : MonoBehaviour {
         transform.localPosition = vPos;
         transform.localEulerAngles = new Vector3(0f, 0f, (_fAngle * Mathf.PI) * (180 / Mathf.PI));
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if(coll.tag.Equals("Ball"))
+        {
+            Debug.Log("Die");
+        }
+    }
 }

@@ -8,6 +8,7 @@ public class BulletPattenManager : MonoBehaviour
     IPattern CurPattern;
 
     public AnimationCurve curve_Angle;
+    public AnimationCurve curve_Angle02;
     // Use this for initialization
     void Start()
     {
@@ -17,22 +18,31 @@ public class BulletPattenManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    IPattern patten = new Pattern01(15, 10f, 1.5f, 180f, curve_Angle);
+        //    patten.OnStart();
+        //    CurPattern = patten;
+        //}
+
         if (Input.GetKeyDown(KeyCode.A))
         {
-            IPattern patten = new Pattern01(15, 10f, 1.5f, 180f, curve_Angle);
+            IPattern patten = new Pattern02(6, 10f, 1.5f, 360f, curve_Angle02);
             patten.OnStart();
             CurPattern = patten;
         }
 
-
-        // 애니메이션이 실행중인가?
-        if (CurPattern.IsTweening())
+        if (CurPattern != null)
         {
-            CurPattern.OnUpdate();
-        }
-        else
-        {
-            CurPattern.OnEnd();
+            // 애니메이션이 실행중인가?
+            if (CurPattern.IsTweening())
+            {
+                CurPattern.OnUpdate();
+            }
+            else
+            {
+                CurPattern.OnEnd();
+            }
         }
     }
 

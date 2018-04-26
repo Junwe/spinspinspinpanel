@@ -252,6 +252,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Pattent\IPattern.cs" />
     <Compile Include="Assets\Scripts\Pattent\Pattern01.cs" />
+    <Compile Include="Assets\Scripts\Pattent\Pattern02.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>

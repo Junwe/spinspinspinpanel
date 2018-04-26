@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PATTERN01INFO
+public class PATTERN02INFO
 {
     public float TweenAngle = 0f;
     public float CreateTime = 0.1f;
@@ -12,7 +12,7 @@ public class PATTERN01INFO
     public List<BasicBullet> listMyBullet = new List<BasicBullet>();
 }
 
-public class Pattern01 : IPattern
+public class Pattern02 : IPattern
 {
     List<PATTERN01INFO> infolist = new List<PATTERN01INFO>();
 
@@ -25,7 +25,7 @@ public class Pattern01 : IPattern
 
     private List<Tweener> _tweener = new List<Tweener>();
 
-    public Pattern01(int _waveCount, float _animationTime, float _bulletAnimationTime, float _animationAngle, AnimationCurve _curve_Angle)
+    public Pattern02(int _waveCount, float _animationTime, float _bulletAnimationTime, float _animationAngle, AnimationCurve _curve_Angle)
     {
         this._waveCount = _waveCount;
         this._animationTime = _animationTime;
@@ -95,7 +95,7 @@ public class Pattern01 : IPattern
             PATTERN01INFO info = new PATTERN01INFO();
 
             info.TweenAngle = WaveStartAngle * (i + 1);
-            info.CreateTime = 0.5f;
+            info.CreateTime = 0.1f;
             infolist.Add(info);
         }
     }
