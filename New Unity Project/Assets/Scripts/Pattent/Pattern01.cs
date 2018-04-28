@@ -102,7 +102,7 @@ public class Pattern01 : IPattern
 
     public int GetTotalBallCount()
     {
-        int cnt = (int)((_bulletAnimationTime / 0.5f * _waveCount) - _waveCount);
+        int cnt = (int)((_animationTime / 0.5f * _waveCount) - _waveCount);
 
         return cnt;
     }

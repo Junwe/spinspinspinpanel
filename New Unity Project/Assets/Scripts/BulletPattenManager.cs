@@ -39,17 +39,26 @@ public class BulletPattenManager : MonoBehaviour
             CurPattern = patten;
         }
 
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            IPattern patten = new Pattern04(15, 10f, 1.5f, 180f, curve_Angle);
+            patten.OnStart();
+            CurPattern = patten;
+        }
+
         if (CurPattern != null)
         {
-            // 애니메이션이 실행중인가?
-            //if (CurPattern.IsTweening())
-            //{
-            CurPattern.OnUpdate(Time.smoothDeltaTime);
-            //}
-            //else
-            //{
-            //    CurPattern.OnEnd();
-            //}
+            //애니메이션이 실행중인가?
+            if (CurPattern.IsTweening())
+            {
+                CurPattern.OnUpdate(Time.smoothDeltaTime);
+                GameManager.GetInstance().CurrentPatternTotalBallNumber = CurPattern.GetTotalBallCount();
+            }
+            else
+            {
+                CurPattern.OnEnd();
+                //GameManager.GetInstance().SetBallCnt();
+            }
         }
 
     }

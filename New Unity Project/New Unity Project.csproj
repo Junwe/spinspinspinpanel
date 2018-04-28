@@ -357,6 +357,7 @@
     <Compile Include="Assets\Scripts\Pattent\Pattern01.cs" />
     <Compile Include="Assets\Scripts\Pattent\Pattern02.cs" />
     <Compile Include="Assets\Scripts\Pattent\Pattern03.cs" />
+    <Compile Include="Assets\Scripts\Pattent\Pattern04.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>

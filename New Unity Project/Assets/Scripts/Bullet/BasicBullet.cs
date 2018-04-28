@@ -47,6 +47,9 @@ public class BasicBullet : MonoBehaviour
                  gameObject.SetActive(false);
                  _radius = 10000f;
 
+                 GameManager.GetInstance().SetLevelProgeress();
+
+
              }).OnUpdate(() => {
                  Vector3 vPos = Vector3.zero;
 

@@ -11,6 +11,7 @@ public class Pattern03 : IPattern
     private int _BallCnt = 0;
     private float _createTimeCount = 0f;
 
+    private bool _tweening = true;
     public Pattern03(int TotalBallNumber, float AnimationTime, float CreateTime)
     {
         _totalBallNumber = TotalBallNumber;
@@ -25,7 +26,7 @@ public class Pattern03 : IPattern
 
     public bool IsTweening()
     {
-        return true;
+        return _tweening;
     }
 
     public void OnEnd()
@@ -40,8 +41,10 @@ public class Pattern03 : IPattern
     public void OnUpdate(float deletaTime)
     {
         if (_BallCnt >= _totalBallNumber)
+        {
+            _tweening = false;
             return;
-
+        }
         _createTimeCount += Time.deltaTime;
 
         if (_createTimeCount >= _createTime)
