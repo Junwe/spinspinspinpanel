@@ -44,16 +44,16 @@ public class Pattern01 : IPattern
         }
     }
     int nBulletCnt = 0;
-    public void OnUpdate()
+    public void OnUpdate(float deletaTime)
     {
         for (int i = 0; i < infolist.Count; ++i)
         {
-            infolist[i].CreateTimeCount += Time.deltaTime;
+            infolist[i].CreateTimeCount += deletaTime;
             if (infolist[i].CreateTimeCount >= infolist[i].CreateTime)
             {
                 BasicBullet temp = BulletManager.GetInstance().GetBullet();
 
-                temp.OnActive(infolist[i].TweenAngle, 10f, _bulletAnimationTime);
+                temp.OnActive(infolist[i].TweenAngle, 730f, _bulletAnimationTime);
 
                 infolist[i].listMyBullet.Add(temp);
                 infolist[i].CreateTimeCount = 0f;

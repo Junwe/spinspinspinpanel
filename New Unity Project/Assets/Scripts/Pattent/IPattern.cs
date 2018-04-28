@@ -2,7 +2,7 @@
 public interface IPattern
 {
     void OnStart();
-    void OnUpdate();
+    void OnUpdate(float deletaTime);
     void OnEnd();
 
     bool IsTweening();

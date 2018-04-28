@@ -25,6 +25,7 @@ public class BulletManager : MonoBehaviour
     void Start()
     {
         CreateBullet();
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -32,20 +33,21 @@ public class BulletManager : MonoBehaviour
     {
         for (int i = 0; i < BulletList.Count; ++i)
         {
-            if (BulletList[i].gameObject.activeSelf)
-                BulletList[i].OnUpdate();
+            //if (BulletList[i].gameObject.activeSelf)
+            //    BulletList[i].OnUpdate();
         }
     }
 
     public void CreateBullet()
     {
-        for (int i = 0; i < 100; ++i)
+        for (int i = 0; i < 500; ++i)
         {
             GameObject obj = Instantiate(pf_BasicBullet);
             BulletList.Add(obj.GetComponent<BasicBullet>());
 
             obj.name = "Bullet_" + i;
             obj.transform.parent = transform;
+            obj.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
             obj.transform.localPosition = new Vector3(5000f, 5000f, 0f);
             obj.gameObject.SetActive(false);
         }

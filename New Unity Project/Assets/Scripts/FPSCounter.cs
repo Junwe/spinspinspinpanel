@@ -48,7 +48,8 @@ public class FPSCounter : MonoBehaviour
 
             // Display it
             FramesPerSec = Mathf.RoundToInt(frameCount / timeSpan);
-            GetComponent<UnityEngine.UI.Text>().text = FramesPerSec.ToString() + " fps"; 
+            GetComponent<UILabel>().text = FramesPerSec.ToString() + " fps";
+            //Debug.Log(FramesPerSec);
             //gameObject.guiText.text = FramesPerSec.ToString() + " fps";
         }
     }

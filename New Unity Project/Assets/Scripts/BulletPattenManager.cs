@@ -12,7 +12,7 @@ public class BulletPattenManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        DOTween.useSmoothDeltaTime = true;
     }
 
     // Update is called once per frame
@@ -35,15 +35,16 @@ public class BulletPattenManager : MonoBehaviour
         if (CurPattern != null)
         {
             // 애니메이션이 실행중인가?
-            if (CurPattern.IsTweening())
-            {
-                CurPattern.OnUpdate();
-            }
-            else
-            {
-                CurPattern.OnEnd();
-            }
+            //if (CurPattern.IsTweening())
+            //{
+                CurPattern.OnUpdate(Time.smoothDeltaTime);
+            //}
+            //else
+            //{
+            //    CurPattern.OnEnd();
+            //}
         }
+
     }
 
     public int GetCurrentPatternBallCnt()

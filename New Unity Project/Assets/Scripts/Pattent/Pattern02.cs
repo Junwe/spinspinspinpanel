@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Timers;
 
 public class PATTERN02INFO
 {
@@ -42,24 +43,32 @@ public class Pattern02 : IPattern
         {
             setTweenAngle(i);
         }
+
     }
+
     int nBulletCnt = 0;
-    public void OnUpdate()
+    float _TestTimeCount = 0f;
+    public void OnUpdate(float deletaTime)
     {
+        _TestTimeCount += Time.deltaTime;
         for (int i = 0; i < infolist.Count; ++i)
         {
-            infolist[i].CreateTimeCount += Time.deltaTime;
+            infolist[i].CreateTimeCount += deletaTime;
             if (infolist[i].CreateTimeCount >= infolist[i].CreateTime)
             {
                 BasicBullet temp = BulletManager.GetInstance().GetBullet();
 
-                temp.OnActive(infolist[i].TweenAngle, 10f, _bulletAnimationTime);
+                temp.OnActive(infolist[i].TweenAngle, 730f, _bulletAnimationTime);
 
                 infolist[i].listMyBullet.Add(temp);
                 infolist[i].CreateTimeCount = 0f;
                 nBulletCnt++;
             }
         }
+    }
+
+    void CreateBullet(int i)
+    {
 
     }
 
@@ -70,12 +79,8 @@ public class Pattern02 : IPattern
 
     public bool IsTweening()
     {
-        for (int i = 0; i < _tweener.Count; ++i)
-        {
-            if (_tweener[i].IsPlaying())
-                return true;
-        }
-        return false;
+        return true;
+
     }
 
     void setTweenAngle(int index)

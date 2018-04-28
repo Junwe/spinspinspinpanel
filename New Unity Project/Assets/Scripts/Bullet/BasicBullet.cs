@@ -37,6 +37,26 @@ public class BasicBullet : MonoBehaviour
 
         _radiusMoveTime = MoveTime;
         _isMoveFalg = true;
+
+
+        DOTween.To(() => _radius, x => _radius = x, 0f, _radiusMoveTime).SetEase(Ease.Linear).OnComplete(
+             () =>
+             {
+                 _isMoveing = false;
+
+                 gameObject.SetActive(false);
+                 _radius = 10000f;
+
+             }).OnUpdate(() => {
+                 Vector3 vPos = Vector3.zero;
+
+
+                 vPos.x = (_radius) * (float)Mathf.Cos(Mathf.Deg2Rad * _angle);
+                 vPos.y = (_radius) * (float)Mathf.Sin(Mathf.Deg2Rad * _angle);
+                 vPos.z = -2f;
+
+                 transform.localPosition = vPos;
+             });
     }
 
     public void SetBulletRadiusInfo(float radius, float radiusTime)
@@ -66,6 +86,14 @@ public class BasicBullet : MonoBehaviour
                 () =>
                 {
                     _isMoveing = false;
+                }).OnUpdate(()=> {
+                    Vector3 vPos = Vector3.zero;
+
+                    vPos.x = (_radius) * (float)Mathf.Cos(Mathf.Deg2Rad * _angle);
+                    vPos.y = (_radius) * (float)Mathf.Sin(Mathf.Deg2Rad * _angle);
+                    vPos.z = -2f;
+
+                    transform.localPosition = vPos;
                 });
         }
         else
@@ -78,12 +106,5 @@ public class BasicBullet : MonoBehaviour
             }
         }
 
-        Vector3 vPos = Vector3.zero;
-
-        vPos.x = 0f + (_radius * (float)Mathf.Cos(Mathf.Deg2Rad * _angle));
-        vPos.y = 0f + (_radius * (float)Mathf.Sin(Mathf.Deg2Rad * _angle));
-        vPos.z = -2f;
-
-        transform.localPosition = vPos;
     }
 }
