@@ -50,7 +50,6 @@ public class Pattern02 : IPattern
     float _TestTimeCount = 0f;
     public void OnUpdate(float deletaTime)
     {
-        _TestTimeCount += Time.deltaTime;
         for (int i = 0; i < infolist.Count; ++i)
         {
             infolist[i].CreateTimeCount += deletaTime;

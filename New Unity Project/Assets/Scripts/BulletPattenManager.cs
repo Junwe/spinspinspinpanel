@@ -18,16 +18,23 @@ public class BulletPattenManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    IPattern patten = new Pattern01(15, 10f, 1.5f, 180f, curve_Angle);
-        //    patten.OnStart();
-        //    CurPattern = patten;
-        //}
-
         if (Input.GetKeyDown(KeyCode.A))
         {
+            IPattern patten = new Pattern01(15, 10f, 1.5f, 180f, curve_Angle);
+            patten.OnStart();
+            CurPattern = patten;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
             IPattern patten = new Pattern02(6, 10f, 1.5f, 360f, curve_Angle02);
+            patten.OnStart();
+            CurPattern = patten;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            IPattern patten = new Pattern03(300, 10f, 0.05f);
             patten.OnStart();
             CurPattern = patten;
         }
@@ -37,7 +44,7 @@ public class BulletPattenManager : MonoBehaviour
             // 애니메이션이 실행중인가?
             //if (CurPattern.IsTweening())
             //{
-                CurPattern.OnUpdate(Time.smoothDeltaTime);
+            CurPattern.OnUpdate(Time.smoothDeltaTime);
             //}
             //else
             //{
